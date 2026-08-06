@@ -1,6 +1,5 @@
 
 <x-layout title="Dashboard">
-<body>
     <h1>DASHBOARD</h1>
-</body>
+    <x-btn nomeBotao="Confirmar"></x-btn>
 </x-layout>
