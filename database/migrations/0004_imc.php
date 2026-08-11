@@ -17,6 +17,13 @@ return new class extends Migration
             $table->double('peso')->nullable();
             $table->double('altura')->nullable();
             $table->timestamps();
+
+            $table->bigInteger('id_faixa')->unsigned();
+
+            $table->foreign('id_faixa')
+                ->references('id_faixa')
+                ->on('faixas')
+                ->onDelete('cascade');
         });
     }
 
