@@ -11,10 +11,10 @@ class ImcController extends Controller
 {
     public function index()
     {
-        $resultado = [
+        $resultado = session('resultado', [
             "imc" => "Aguardando Valores",
             "faixa" => "Aguardando Valores"
-        ];
+        ]);
 
         return view('imc.index')->with('resultado', $resultado);
     }
@@ -62,7 +62,7 @@ class ImcController extends Controller
         $data = $request->validate([
             'nome'   => 'required|string',
             'peso'   => 'required|numeric',
-            'altura' => 'required|mumeric',
+            'altura' => 'required|numeric',
             'imc'    => 'required',
             'faixa'  => 'required|string',
         ]);
@@ -84,7 +84,7 @@ class ImcController extends Controller
         }
 
         if ($request->hasFile('image')) {
-            $image = $request->fille('image');
+            $image = $request->file('image');
             $imageName = $data['nome'].'_'. time() . '.' . $image->getClientOriginalExtension();
 
             $image->storeAs('images/user', $imageName, 'local');
@@ -96,7 +96,15 @@ class ImcController extends Controller
 
             return redirect()
                 ->route('imc.index')
-                ->with('error', 'Falha ao carregar a imagem.');
+                ->withErros($validator, 'error', 'Falha ao carregar a imagem.')
+                ->withInput()
+                ->with('resultado', [
+                    'nome'  => $data['nome'],
+                    'peso'  => $data['peso'],
+                    'altura'=> $data['altura'],
+                    'imc'   => $data['imc'],
+                    'faixa' => $data['faixa'],
+                ]);
         }
 
 

@@ -24,7 +24,7 @@ class DashboardController extends Controller
     {
         $updateImc = ImcModel::findOrFail($id);
 
-        $updateImc->name = $request->novo_nome;
+        $updateImc->nome = $request->novo_nome;
         $updateImc->peso = $request->novo_peso;
         $updateImc->altura = $request->nova_altura;
 

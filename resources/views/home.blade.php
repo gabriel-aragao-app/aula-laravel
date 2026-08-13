@@ -20,35 +20,6 @@
         <x-btn nomeBotao="Calcular IMC"></x-btn>
     </a>
 
-    @if($resultado["imc"] != "Aguardando valores" && $resultado["faixa"] != "Aguardando valores")
-    <form method="post" action="{{route('imc.salvar')}}"> enctyp="multipart/form-data">
-        @csrf 
-        <input type="hidden" name="imc" value="{{ $resultado['imc'] }}">
-        <input type="hidden" name="faixa" value="{{ $resultado['faixa'] }}">
-        <input type="hidden" name="peso" value="{{ $resultado['peso'] }}">
-        <input type="hidden" name="altura" value="{{ $resultado['altura'] }}">
-        <input type="hidden" name="nome" value="{{ $resultado['nome'] }}">
-
-        <div class="mb-3">
-            <label for="formFile" class="form-label">Mande sua foto</label>
-            <input type="file" name="image" class="form-control" id="formFile">
-        </div>
-
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-        </div>
-
-    </form>
-    @endif
-
-    @if ($errors->any())
-    <div class= "alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    
 </main>
 </x-layout>
