@@ -26,10 +26,10 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($categorias as $categoria) {
-            FaixaModel::creat([
+            FaixaModel::create([
                 'categoria' => $categoria
             ]);
         }
-    }
+    } 
 
 }

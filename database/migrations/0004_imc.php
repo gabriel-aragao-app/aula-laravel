@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('nome')->nullable();
             $table->double('peso')->nullable();
             $table->double('altura')->nullable();
+            $table->string('url')->nullable();
+
             $table->timestamps();
 
             $table->bigInteger('id_faixa')->unsigned();
