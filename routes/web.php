@@ -51,4 +51,4 @@ Route::middleware(Autentication::class)->group(function () {
 Route::middleware('auth.nivel:1,2,3')->group(function () {
      // VIEW DASHBOARD
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('imc.dashboard');
-})
+});
